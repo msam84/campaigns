@@ -16,7 +16,9 @@ export class Campaign {
     public budget: number,
     public active: boolean,
     public visible: boolean
-  ) {}
+  ) {
+    this.validate();
+  }
 
 
   static create(campaign: CampaignInput) {
@@ -40,5 +42,14 @@ export class Campaign {
     private static isActive(campaign: CampaignInput, start: number, end: number): boolean {
       const current = Date.now();
       return current < end && current > start;
+    }
+
+    private validate(): void {
+      if (this.startDate > this.endDate) {
+        this.visible = false
+      }
+      if (!this.id || !this.startDate || !this.endDate || !this.name){
+        this.visible = false;
+      }
     }
 }
