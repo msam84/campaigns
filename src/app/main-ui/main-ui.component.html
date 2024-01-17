@@ -1,0 +1,22 @@
+<div class="top-bar">
+  <mat-form-field class="top-bar_input">
+    <mat-label>search</mat-label>
+     <input matInput required type="text" [(ngModel)]="searchString" (ngModelChange)="searchChanged()" [value]="searchString"/>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="top-bar_date">
+    <mat-label>Start Date</mat-label>
+    <input matInput [matDatepicker]="pickerStart" [(ngModel)]="startDate" [max]="endDate">
+    <mat-datepicker #pickerStart ></mat-datepicker>
+    <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="top-bar_date">
+    <mat-label>End Date</mat-label>
+    <input matInput [matDatepicker]="pickerEnd" [(ngModel)]="endDate" [min]="startDate">
+    <mat-datepicker #pickerEnd ></mat-datepicker>
+    <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+  </mat-form-field>
+</div>
+
+<app-campaign-list [filter]="searchString" [startDate]="startDate" [endDate]="endDate"></app-campaign-list>

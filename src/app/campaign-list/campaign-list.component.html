@@ -1,0 +1,22 @@
+<div class="grid">
+  <h3>Name</h3>
+  <h3>Start</h3>
+  <h3>End</h3>
+  <h3>Status</h3>
+  <h3>Budget</h3>
+</div>
+<div *ngIf="campaigns$ | async as campaigns">
+  <div *ngFor="let campaign of campaigns; trackBy: trackCampaign">
+    <div *ngIf="campaign.visible" class="grid">
+      <div class="hoverable">
+        <span>{{ campaign.name }}</span>
+        <span>{{ campaign.startDate | date}}</span>
+        <span>{{ campaign.endDate | date}}</span>
+        <span [style.color]="campaign.active ? '#32a032' : '#c71313'">{{
+          campaign.active ? 'active' : 'inactive'
+        }}</span>
+        <span>{{ campaign.budget }}</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.hoverable {
+  display: contents;
+
+  &:hover span {
+    background-color: #9e9c9c;
+  }
+}
+
+.active {
+  background-color: #c71313;
+}
