@@ -14,21 +14,17 @@ export class CampaignsService {
 
   constructor() {
     (window as any)['addCampaigns'] = this.addCampaigns;
-    console.warn(this)
-
   }
 
   public addCampaigns = (campaigns: Array<Object>) => {
     const parsed = JSON.parse(JSON.stringify(campaigns));
-    console.error('parsed', parsed);
+    console.info('parsed', parsed);
 
     this.campaigns = this.campaigns.concat(
       parsed.map((campaign: any) => {
         return Campaign.create(campaign);
       })
     );
-    console.error('afer', this.campaigns);
-    console.warn(this)
     this.campaigns$$.next(this.campaigns);
 
   }
